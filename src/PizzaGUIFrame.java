@@ -30,15 +30,25 @@ public class PizzaGUIFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        add(buildOptionsPanel(), BorderLayout.CENTER);
-        add(buildReceiptPanel(), BorderLayout.SOUTH);
-        add(buildButtonPanel(), BorderLayout.PAGE_END);
+        add(buildOptionsPanel(), BorderLayout.NORTH);
+        add(buildReceiptPanel(), BorderLayout.CENTER);
+        add(buildButtonPanel(), BorderLayout.SOUTH);
 
         setVisible(true);
     }
 
     private JPanel buildOptionsPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
+
+        panel.add(buildCrustPanel());
+        panel.add(buildSizePanel());
+        panel.add(buildToppingsPanel());
+
+        return panel;
+    }
+
+    private JPanel buildCrustPanel() {
+        JPanel panel = new JPanel(new GridLayout(3, 1));
         panel.setBorder(new TitledBorder("Crust Type"));
 
         thinRB = new JRadioButton("Thin");
